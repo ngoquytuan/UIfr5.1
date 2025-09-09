@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans antialiased;
+    @apply bg-white dark:bg-gray-900;
+    @apply text-gray-900 dark:text-gray-100;
+    @apply overflow-hidden;
+  }
+  
+  * {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+}
+
+/* Component styles */
+@layer components {
+  /* Chat Message Bubbles */
+  .message-user {
+    @apply bg-primary-500 text-white rounded-2xl rounded-br-md px-4 py-2 max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg ml-auto;
+  }
+  
+  .message-bot {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-2xl rounded-bl-md px-4 py-2 max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg mr-auto;
+  }
+  
+  .message-system {
+    @apply bg-warning text-white rounded-full px-3 py-1 text-sm text-center mx-auto max-w-max;
+  }
+  
+  /* Scrollbar Styling */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(156 163 175) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(156 163 175);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(107 114 128);
+  }
+  
+  /* Loading animations */
+  .typing-indicator {
+    @apply flex space-x-1;
+  }
+  
+  .typing-dot {
+    @apply w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full animate-pulse;
+    animation-delay: var(--delay, 0ms);
+  }
+  
+  /* File upload area */
+  .upload-area {
+    @apply border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg transition-colors;
+  }
+  
+  .upload-area.drag-over {
+    @apply border-primary-500 bg-primary-50 dark:bg-primary-900/20;
+  }
+  
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-ghost {
+    @apply hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+  
+  /* Form elements */
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200;
+  }
+  
+  .textarea-field {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none transition-colors duration-200;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .gradient-mask-t-0 {
+    -webkit-mask-image: linear-gradient(to top, transparent, black 20px);
+    mask-image: linear-gradient(to top, transparent, black 20px);
+  }
+  
+  .gradient-mask-b-0 {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20px);
+    mask-image: linear-gradient(to bottom, transparent, black 20px);
+  }
+}
+
+/* Dark mode specific overrides */
+@media (prefers-color-scheme: dark) {
+  .message-bot {
+    @apply bg-gray-700 text-gray-100;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .message-user,
+  .message-bot {
+    @apply max-w-[85%];
+  }
+  
+  body {
+    @apply text-sm;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .message-user,
+  .message-bot {
+    @apply bg-gray-100 text-gray-900 border;
+  }
+}
